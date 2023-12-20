@@ -1,20 +1,68 @@
-import React from 'react';
-import LoginForm from '../components/LoginForm';
-import RegistrationForm from '../components/RegistrationForm';
-import GifSearch from '../components/GifSearch';
+'use client';
+
+
+import React, { useState, useEffect } from 'react';
+import { redirect } from 'next/navigation';
+import GifSearch from '../components/GifSearch.jsx';
+import './globals.css';
+import auth from '../firebase.js';
 
 
 const HomePage = () => {
-    return (
-        <div>
-            <h1>Welcome to My GIF App</h1>
+    const [isLogged, setIsLogged] = useState(false);
+    const [user, setUser] = useState(null);
+    // const { push } = useRouter();
 
-            <LoginForm />
-            <RegistrationForm />
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            try {
+                if (user) {
+                    setIsLogged(true);
+                    setUser(user);
+                } else {
+                    setIsLogged(false);
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    })
+
+
+    const logOut = () => {
+        auth.signOut();
+        sessionStorage.clear();
+    }
+
+
+    return (
+        <div className = 'flex flex-col'>
+            {
+                isLogged && <div >
+                                { user.email }
+                                <button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                                    onClick = { logOut }>
+                                    Logout
+                                </button>
+                            </div>
+            }
+            {
+                !isLogged && <div className = 'w-screen me-3 flex justify-end'>
+                                <a href = '/login'><button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                                                    >Login</button></a>
+                                <a href = '/register'><button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                                                    >Register</button></a>
+                            </div>
+            }
+
+            <h1 className = 'text-7xl font-bold font-family: ui-monospace text-stone-200 mt-40 self-center'>Gif Master</h1>
 
             <GifSearch />
         </div>
     );
 };
+
 
 export default HomePage;
