@@ -40,9 +40,11 @@ const HomePage = () => {
     return (
         <div className = 'flex flex-col'>
             {
-                isLogged && <div >
-                                { user.email }
-                                <button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                isLogged && <div className = 'w-screen me-3 flex justify-end'>
+                                <span className = 'mt-6 text-xl font-bold me-2 text-stone-200'>
+                                    { user.email }
+                                </span>
+                                <button className = 'p-2 mt-5 me-2 text-m bg-stone-200 w-20 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
                                     onClick = { logOut }>
                                     Logout
                                 </button>
@@ -50,9 +52,9 @@ const HomePage = () => {
             }
             {
                 !isLogged && <div className = 'w-screen me-3 flex justify-end'>
-                                <a href = '/login'><button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                                <a href = '/login'><button className = 'p-2 mt-5 me-2 text-m bg-stone-200 w-20 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
                                                     >Login</button></a>
-                                <a href = '/register'><button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
+                                <a href = '/register'><button className = 'p-2 mt-5 me-2 text-m bg-stone-200 w-20 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
                                                     >Register</button></a>
                             </div>
             }

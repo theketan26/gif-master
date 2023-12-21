@@ -39,6 +39,7 @@ const GifSearch = () => {
         <div className = 'w-screen flex flex-col'>
             <div className = 'mt-20 w-1/2 self-center flex flex-col'>
                 <input className = 'w-1/2 self-center h-10 text-xl px-4 rounded-xl'
+                    placeholder = 'Search'
                     type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
                 <button className = 'p-2 mt-5 text-xl bg-stone-200 w-28 self-center rounded-full text-stone-800 font-bold bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-orange-900 via-amber-100 to-orange-900'
                     onClick={handleSearch}>Search</button>
