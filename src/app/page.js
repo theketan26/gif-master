@@ -2,7 +2,6 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { redirect } from 'next/navigation';
 import GifSearch from '../components/GifSearch.jsx';
 import './globals.css';
 import auth from '../firebase.js';
