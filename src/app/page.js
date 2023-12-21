@@ -58,7 +58,7 @@ const HomePage = () => {
                             </div>
             }
 
-            <h1 className = 'text-7xl font-bold font-family: ui-monospace text-stone-200 mt-40 self-center'>Gif Master</h1>
+            <h1 className = 'text-7xl font-bold font-family: ui-monospace text-stone-200 mt-10 self-center'>Gif Master</h1>
 
             <GifSearch />
         </div>
