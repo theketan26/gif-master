@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className = 'w-screen h-screen bg-gradient-to-l from-green-700 via-cyan-800 to-slate-800'>
+			<body className = 'w-full h-full bg-gradient-to-l from-green-700 via-cyan-800 to-slate-800 overflow-x-hidden'>
 				{children}
 			</body>
 		</html>
